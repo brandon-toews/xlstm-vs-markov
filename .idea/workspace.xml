@@ -5,21 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ce468e2-8d87-4f09-8595-5742087d7854" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/lstm.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/custom_lstm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dynamic_dropout.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/early_stopping.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/markov.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/old_custom_lstm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tenser_xLSTM.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xLSTM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkpoint.pt" beforeDir="false" afterPath="$PROJECT_DIR$/checkpoint.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_lstm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dynamic_dropout.py" beforeDir="false" afterPath="$PROJECT_DIR$/dynamic_dropout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/early_stopping.py" beforeDir="false" afterPath="$PROJECT_DIR$/early_stopping.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_custom_lstm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tenser_xLSTM.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xLSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/xLSTM.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

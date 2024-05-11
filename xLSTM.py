@@ -1,46 +1,73 @@
 import torch
 import torch.nn as nn
-import numpy as np
 import math
 from early_stopping import EarlyStopping
 from dynamic_dropout import DynamicDropout
-import matplotlib.pyplot as plt
 
 
+# xLSTM model with dynamic dropout and early stopping
 class mLSTM(nn.Module):
     def __init__(self, input_size, hidden_size, mem_dim, layers=1, output_size=1):
         super(mLSTM, self).__init__()
+        # input_size is the number of features in the input
         self.input_size = input_size
+        # hidden_size is the number of features in the hidden state h
         self.hidden_size = hidden_size
+        # mem_dim is the number of features in the memory state C
         self.mem_dim = mem_dim
+        # layers is the number of layers in the model
         self.layers = layers
+        # dropout layer
         self.dropout = DynamicDropout()
+        # query weights
         self.Wq = nn.Parameter(torch.randn(hidden_size, input_size))
+        # query bias
         self.bq = nn.Parameter(torch.randn(hidden_size, 1))
+        # key weights
         self.Wk = nn.Parameter(torch.randn(mem_dim, input_size))
+        # key bias
         self.bk = nn.Parameter(torch.randn(mem_dim, 1))
+        # value weights
         self.Wv = nn.Parameter(torch.randn(mem_dim, input_size))
+        # value bias
         self.bv = nn.Parameter(torch.randn(mem_dim, 1))
+        # input gate weights
         self.wi = nn.Parameter(torch.randn(1, input_size))
+        # input gate bias
         self.bi = nn.Parameter(torch.randn(1))
+        # forget gate weights
         self.wf = nn.Parameter(torch.randn(1, input_size))
+        # forget gate bias
         self.bf = nn.Parameter(torch.randn(1))
+        # output gate weights
         self.Wo = nn.Parameter(torch.randn(hidden_size, input_size))
+        # output gate bias
         self.bo = nn.Parameter(torch.randn(hidden_size, 1))
+        # fully connected layer to output the prediction to single value
         self.fc = nn.Linear(hidden_size, output_size)
+        # initialize the parameters
         self.reset_parameters()
+        # optimizer Adam with weight decay for regularization to prevent overfitting
         self.optimizer = torch.optim.Adam(self.parameters(), lr=0.05, weight_decay=1e-6)
+
         # self.criterion = nn.MSELoss()
         # self.criterion = nn.L1Loss()
+        # L1 loss is more robust to outliers and seams to work best for this problem
         self.criterion = nn.SmoothL1Loss()
 
+    # initialize the parameters
     def reset_parameters(self):
+        # initialize the parameters using xavier uniform initialization
         for p in self.parameters():
+            # if the parameter is a matrix
             if p.data.ndimension() >= 2:
+                # initialize the matrix using xavier uniform initialization
                 nn.init.xavier_uniform_(p.data)
             else:
+                # initialize the bias to zeros
                 nn.init.zeros_(p.data)
 
+    # forward pass
     def forward(self, x, states):
         final_output = None
         for i in range(self.layers):
@@ -80,7 +107,7 @@ class mLSTM(nn.Module):
 
     def train_model(self, data, val_data, epochs, seq_len):
         # initialize the early_stopping object
-        early_stopping = EarlyStopping(patience=150, verbose=False)
+        early_stopping = EarlyStopping(patience=150, verbose=True)
         for epoch in range(epochs):
             states = self.init_hidden()
             self.optimizer.zero_grad()

@@ -9,11 +9,9 @@ import matplotlib.pyplot as plt
 from meteostat import Point, Daily
 import numpy as np
 import torch
-
-import custom_lstm
 import xLSTM
 from markov import MarkovChain
-import old_custom_lstm
+
 
 
 def extract_features(data, features):
@@ -52,7 +50,7 @@ def create_model(type, train, val, test, hidden, mem, layers, seq):
 
     if type == 'xLSTM':
         model = xLSTM.mLSTM(input_size, hidden_size, mem_dim, layers)
-        model.train_model(train, val, 5, seq_len)
+        model.train_model(train, val, 100, seq_len)
         # print(model.state_dict())
 
         # Load the best model state
@@ -235,15 +233,15 @@ def main():
     mae_markov = mean_absolute_error(error_test[:len(uni_model_pred) - best_order+1], markov_pred[best_order:])
 
     # print('MAE for Normal LSTM Model: %.3f' % mae_normal)
-    '''print('MAE for xLSTM Univariate Model: %.3f' % mae_uni)
-    print('MAE for xLSTM Multivariate Model: %.3f' % mae_multi)'''
+    print('MAE for xLSTM Univariate Model: %.3f' % mae_uni)
+    print('MAE for xLSTM Multivariate Model: %.3f' % mae_multi)
     print('MAE for Markov Chain Model: %.3f' % mae_markov)
 
     print(' ')
 
     # print('RMSE for Normal LSTM Model: %.3f' % rmse_normal)
-    '''print('RMSE for xLSTM Univariate Model: %.3f' % rmse_uni)
-    print('RMSE for xLSTM Multivariate Model: %.3f' % rmse_multi)'''
+    print('RMSE for xLSTM Univariate Model: %.3f' % rmse_uni)
+    print('RMSE for xLSTM Multivariate Model: %.3f' % rmse_multi)
     print('RMSE for Markov Chain Model: %.3f' % rmse_markov)
 
     print(' ')
@@ -255,8 +253,8 @@ def main():
     corr_markov, _ = pearsonr(error_test[:len(uni_model_pred) - best_order+1], markov_pred[best_order:])
 
     # print('Correlation for Normal LSTM Model: %.3f' % corr_normal)
-    '''print('Correlation for xLSTM Univariate Model: %.3f' % corr_uni)
-    print('Correlation for xLSTM Multivariate Model: %.3f' % corr_multi)'''
+    print('Correlation for xLSTM Univariate Model: %.3f' % corr_uni)
+    print('Correlation for xLSTM Multivariate Model: %.3f' % corr_multi)
     print('Correlation for Markov Chain Model: %.3f' % corr_markov)
 
     print(' ')
@@ -268,19 +266,18 @@ def main():
     r2_markov = r2_score(error_test[:len(uni_model_pred) - best_order+1], markov_pred[best_order:])
 
     # print('R-squared for Normal LSTM Model: %.3f' % r2_normal)
-    '''print('R-squared for xLSTM Univariate Model: %.3f' % r2_uni)
-    print('R-squared for xLSTM Multivariate Model: %.3f' % r2_multi)'''
+    print('R-squared for xLSTM Univariate Model: %.3f' % r2_uni)
+    print('R-squared for xLSTM Multivariate Model: %.3f' % r2_multi)
     print('R-squared for Markov Chain Model: %.3f' % r2_markov)
 
     # Set the figure size
     #plt.figure(figsize=(8, 8))
-    plt.title('Markov Chain Model - FLOAT Values')
+    plt.title('Model Comparison')
     plt.plot(error_test, label='Test Data')
-    #plt.plot(markov_test, label='Markov Chain Model test data')
-    # plt.plot(denorm_normal_pred, label='Normal LSTM Model')
-    #plt.plot(denorm_uni_pred, label='xLSTM Univariate Model')
-    #plt.plot(denorm_multi_pred, label='xLSTM Multivariate Model')
-    plt.plot(markov_pred[best_order:], label='Markov Chain Model', color='tab:olive')
+    # plt.plot(markov_test, label='Markov Chain Model test data')
+    plt.plot(denorm_uni_pred, label='xLSTM Univariate Model')
+    plt.plot(denorm_multi_pred, label='xLSTM Multivariate Model')
+    plt.plot(markov_pred[best_order:], label='Markov Chain Model')
 
     plt.legend()
     plt.show()
