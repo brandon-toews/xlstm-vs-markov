@@ -40,7 +40,7 @@ class DynamicDropout(nn.Module):
             # Calculate the new dropout rate
             # Lower the dropout rate by twice the adjustment rate
             # Faster decrease to avoid underfitting
-            check = self.dropout.p - (self.adjustment_rate * 2)
+            check = self.dropout.p - (self.adjustment_rate * 1)
             # If the new dropout rate is less than 0
             if check < 0:
                 # Set the dropout rate to 0

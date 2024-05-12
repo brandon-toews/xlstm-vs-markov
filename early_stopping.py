@@ -1,3 +1,4 @@
+import math
 import numpy as np
 import torch
 
@@ -32,11 +33,12 @@ class EarlyStopping:
             # Save model checkpoint
             self.save_checkpoint(val_loss, model)
         # If score is less than best score plus delta
-        elif score < self.best_score + self.delta:
+        elif not math.isnan(score) and score < self.best_score + self.delta:
             # Increase counter
             self.counter += 1
             # Increase dropout rate of model to help prevent overfitting
-            model.dropout.increase_dropout()
+            for i in range(len(model.blocks)):
+                model.blocks[i].dropout.increase_dropout()
 
             # Print verbose message
             if self.verbose:
@@ -48,8 +50,9 @@ class EarlyStopping:
         # Else if score is greater than best score plus delta
         else:
             # Decrease dropout rate of model to help prevent underfitting
-            model.dropout.decrease_dropout()
-            # model.dropout.reset_dropout()
+            #model.dropout.decrease_dropout()
+            for i in range(len(model.blocks)):
+                model.blocks[i].dropout.decrease_dropout()
 
             # Update best score
             self.best_score = score
