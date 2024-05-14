@@ -2,7 +2,7 @@
 ## Project Description
 Use Meteostat python library (https://github.com/meteostat/meteostat-python) and take one form of weather data. Predict future values based on the historical temporal sequence. The objective is to leverage the temporal dependencies within the data to create an effective predictive model. 
 
-## Dataset
+## 💾 Dataset
 The dataset is structured around daily weather measurements, specifically fetched for Vancouver, BC, Canada. Data retrieval is facilitated by the Meteostat (https://github.com/meteostat/meteostat-python) library’s Daily class, which allows for the acquisition of historical daily weather data. A geographic point is defined for Vancouver (latitude 49.2497, longitude -123.1193, altitude 70 meters) using the Point class, pinpointing the exact location for which the data is collected. The data covers a complete calendar year from January 1, 2018, to December 31, 2018.
 
 ## Introduction to xLSTM
