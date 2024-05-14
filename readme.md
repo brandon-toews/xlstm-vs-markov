@@ -5,6 +5,10 @@
     2. Install dependencies: `pip install -r requirements.txt`
     3. Run code: `python main.py`
 
+## Results 📊 🔥
+![](model_comp_plt.png)
+![](model_comp_test.png)
+
 ## Project Description
 Use Meteostat python library (https://github.com/meteostat/meteostat-python) and take one form of weather data. Predict future values based on the historical temporal sequence. The objective is to leverage the temporal dependencies within the data to create an effective predictive model. 
 
