@@ -1,4 +1,10 @@
 # xLSTM vs Markov Chain - Time Series Forecasting
+## Getting Started 🚀
+
+    1. Clone the repository: `git clone [repository_url]`
+    2. Install dependencies: `pip install -r requirements.txt`
+    3. Run code: `python main.py`
+
 ## Project Description
 Use Meteostat python library (https://github.com/meteostat/meteostat-python) and take one form of weather data. Predict future values based on the historical temporal sequence. The objective is to leverage the temporal dependencies within the data to create an effective predictive model. 
 
@@ -33,9 +39,3 @@ This file contains a custom implementation of the Markov Chain model.
 andrewgcodes. (2024) 'xLSTM: my attempts at implementing various bits of Sepp Hochreiter's new xLSTM architecture', GitHub repository. Available at: https://github.com/andrewgcodes/xlstm (Accessed: 9 May 2024). 
 
 Beck, M. et al. (2024) 'xLSTM: Extended Long Short-Term Memory', arXiv, [Preprint], 7 May. Available at: https://doi.org/10.48550/arXiv.2405.04517 (Accessed: 9 May 2024).
-
-## Getting Started 🚀
-
-    1. Clone the repository: `git clone [repository_url]`
-    2. Install dependencies: `pip install -r requirements.txt`
-    3. Run code: `python main.py`
