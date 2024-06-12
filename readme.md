@@ -42,4 +42,4 @@ This file contains a custom implementation of the Markov Chain model.
 ## References
 andrewgcodes. (2024) 'xLSTM: my attempts at implementing various bits of Sepp Hochreiter's new xLSTM architecture', GitHub repository. Available at: https://github.com/andrewgcodes/xlstm (Accessed: 9 May 2024). 
 
-Beck, M. et al. (2024) 'xLSTM: Extended Long Short-Term Memory', arXiv, [Preprint], 7 May. Available at: https://doi.org/10.48550/arXiv.2405.04517 (Accessed: 9 May 2024).
+Beck, M., Pöppel, K., Spanring, M., Auer, A., Prudnikova, O., Kopp, M., Klambauer, G., Brandstetter, J. and Hochreiter, S. (2024) 'xLSTM: Extended Long Short-Term Memory', arXiv preprint arXiv:2405.04517. Available at: https://doi.org/10.48550/arXiv.2405.04517 (Accessed: 9 May 2024).
